@@ -3,7 +3,7 @@ import sys
 
 pygame.init()
 jumpCount = 10
-isjump = False
+isJump = False
 win = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("First Game")
 x = 50
@@ -25,22 +25,21 @@ while run:
         x -= speed
     if keys[pygame.K_RIGHT] and x < 500 - width - speed:
         x += speed
-    if keys[pygame.K_UP] and y > speed:
-        y -= speed
-    if keys[pygame.K_DOWN] and y < 500 - height - speed:
-        y += speed
     if not (isJump):
-
+        if keys[pygame.K_UP] and y > speed:
+            y -= speed
+        if keys[pygame.K_DOWN] and y < 500 - height - speed:
+            y += speed
         if keys[pygame.K_SPACE]:
-            isjump = True
+            isJump = True
+
     else:
-        if jumpCount >= -10:
 
-            y -= 1(jumpCount**2) * 0.5
-
+        if isJump >= -10:
+            neg = -1
             if jumpCount < 0:
                 neg = -1
-            y -= (jumpCount**2) * 0.5 * neg
+            y -= (jumpCount) ** 2 * 0.5 * neg
             jumpCount -= 1
         else:
             isJump = False
